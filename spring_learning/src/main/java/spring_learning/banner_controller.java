@@ -69,21 +69,30 @@ public class banner_controller {
 		return "banner/bannerlist";
 	}
 	
-	// searcj 검색에 관현사항은 필수조건은 아니며, 또한 null 처리가 되었을 경우 defaultValue
-	@GetMapping("/banner/bannerlist")
-	public String bannerlist(Model m, @RequestParam(name="search", defaultValue = "", required = false)String search,
-									  @RequestParam(defaultValue = "1", required = false)String pageno) {
-		System.out.println(pageno);
-		List<banner_DTO> all = null;
-		if(search.equals("")) { // 검색어가 없을 경우
-			all = this.dao.all_banner();
-		}
-		else { // 검색어가 있을 경우
-			all = this.dao.search_banner(search);
-		}
-		m.addAttribute("search",search); // 검색어를 jsp로 전달
-		m.addAttribute("all",all);
-		return "banner/bannerlist";
-	}
+	//search 검색에 관련사항은 필수조건은 아니며, 또한 null처리가 되었을 경우 defaultValue
+	   @GetMapping("/banner/bannerlist")
+	   public String bannerlist(Model m,
+	         @RequestParam(name = "search", defaultValue = "", required = false)String search,
+	         @RequestParam(defaultValue = "1", required = false)Integer pageno
+	         ) {
+		   
+		   // 데이터 총 갯수 확인 코드
+		   int total = this.dao.banner_total();
+		   System.out.println(total);
+		   // 데이터 총 갯수 확인 코드 끝
+	      
+	      //검색기능
+	      List<banner_DTO> all = null;
+	      //System.out.println(search);
+	      if(search.intern() == "") { //검색어가 없을 경우
+	         all = this.dao.all_banner( pageno); // 인자값 : 사용자가 페이지 번호를 클릭한 값을 전달
+	      }else {//검색어가 있을경우
+	         all = this.dao.search_banner(search);
+	      }
+	      m.addAttribute("search",search);
+	      m.addAttribute("all",all);
+	      
+	      return null;
+	   }   
 	
 }
