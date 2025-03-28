@@ -9,10 +9,10 @@
 <title>배너 리스트 페이지</title>
 </head>
 <body>
-
 	<form id="sform" method="get" action="./bannerlist" onsubmit="return spage()">
 		<P>배너명 검색 : <input type="text" name="search" value="${search}"><input type="submit" value="검색"><input type="button" value="전체목록" onclick="location.href='./bannerlist';"></P>
 	</form>
+	<p>전체 등록된 배너 갯수 : ${total}</p>
 	<table border="1" cellpadding="0" cellspacing="0">
 		<thead>
 			<tr>
@@ -33,11 +33,11 @@
 		     </tbody>
 	     </cr:if>
 		<tbody>
-			<cr:set var="ino" value="${total}"></cr:set>
-			<cr:forEach var="bn" items="${all }">
+			<cr:set var="ino" value="${total-userpage}"></cr:set> <!-- 게시물 일련번호 셋팅 -->
+			<cr:forEach var="bn" items="${all }" varStatus="idx">
 				<tr height="50">
 					<td><input type="checkbox"></td>
-					<td align="center">${ino}</td>
+					<td align="center">${ino-idx.index}</td>
 					<td>${bn.bname }</td>
 					<td align="center">
 					<cr:if test="${bn.file_url == null}">
@@ -56,6 +56,13 @@
 		</tbody>
 	</table>
 	<br><br>
+	<!-- form 전송으로 선택된 값을 삭제하는 프로세서 -->
+	<form id="dform">
+		<input type="hidden">
+	</form>
+	<input type="button" value="선택삭제">
+	<br><br>
+	
 	<!-- 페이징  -->
 	<table border="1" cellpadding="0" cellspacing="0">
 		<tbody>

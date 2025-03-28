@@ -78,8 +78,20 @@ public class banner_controller {
 		   
 		   // 데이터 총 갯수 확인 코드
 		   int total = this.dao.banner_total();
-		   System.out.println(total);
 		   // 데이터 총 갯수 확인 코드 끝
+		   
+		   int userpage = 0; // 사용자가 클릭한 페이지 번호에 맞는 순차번호 계산값
+		   
+		   if(pageno == 1) {
+			   userpage = 0;
+		   }
+		   else { // 1외에 페이지 번호를 클릭 시
+			   userpage = (pageno - 1) * 5;
+		   }
+		   
+		   // 해당 일련번호를 계산하여 jsp에 전달
+		   m.addAttribute("userpage",userpage);
+		   
 	      
 	      //검색기능
 	      List<banner_DTO> all = null;
