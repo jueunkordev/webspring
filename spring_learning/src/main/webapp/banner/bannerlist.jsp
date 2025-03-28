@@ -33,17 +33,18 @@
 		     </tbody>
 	     </cr:if>
 		<tbody>
+			<cr:set var="ino" value="${total}"></cr:set>
 			<cr:forEach var="bn" items="${all }">
 				<tr height="50">
 					<td><input type="checkbox"></td>
-					<td></td>
+					<td align="center">${ino}</td>
 					<td>${bn.bname }</td>
-					<td>
+					<td align="center">
 					<cr:if test="${bn.file_url == null}">
 						NO IMAGE					
 					</cr:if> 
 					<cr:if test="${bn.file_url != null}">
-							<img src="..${bn.file_url }" style="width: 100px;">
+							<img src="..${bn.file_url }" style="width: 100px; align-content: center;">
 					</cr:if>
 					</td>
 					<td align="center">
@@ -59,7 +60,11 @@
 	<table border="1" cellpadding="0" cellspacing="0">
 		<tbody>
 			<tr height="30">
-				<td width="50" align="center" onclick="pg('1')">1</td>
+				<!-- Controller에서 데이터의 전체 갯수를 받음 해당 값을 한 페이지 당 5개씩 출력하는 구조로 산수식을 입력하여 총 페이징 번호를 생성하여 출력함 -->
+				<cr:set var="pageidx" value="${total / 5 + (1-((total / 5) % 1))%1 }"/>
+				<cr:forEach var="no" begin="1" end="${pageidx}" step="1">
+					<td width="50" align="center" onclick="pg('${no}')">${no}</td>
+				</cr:forEach>
 			</tr>
 		</tbody>
 	</table>

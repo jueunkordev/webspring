@@ -89,7 +89,9 @@ public class banner_controller {
 	      }else {//검색어가 있을경우
 	         all = this.dao.search_banner(search);
 	      }
-	      m.addAttribute("search",search);
+	      
+	      m.addAttribute("total",total); // 데이터 전체 갯수
+	      m.addAttribute("search",search); // 검색어를 전달
 	      m.addAttribute("all",all);
 	      
 	      return null;
