@@ -66,12 +66,14 @@ public class banner_controller {
 		}
 		this.callback = this.dao.new_banner(dto);
 		System.out.println(this.callback);
-		return null;
+		return "banner/bannerlist";
 	}
 	
 	// searcj 검색에 관현사항은 필수조건은 아니며, 또한 null 처리가 되었을 경우 defaultValue
 	@GetMapping("/banner/bannerlist")
-	public String bannerlist(Model m, @RequestParam(name="search", defaultValue = "", required = false)String search) {
+	public String bannerlist(Model m, @RequestParam(name="search", defaultValue = "", required = false)String search,
+									  @RequestParam(defaultValue = "1", required = false)String pageno) {
+		System.out.println(pageno);
 		List<banner_DTO> all = null;
 		if(search.equals("")) { // 검색어가 없을 경우
 			all = this.dao.all_banner();

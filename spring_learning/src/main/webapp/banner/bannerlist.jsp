@@ -53,8 +53,15 @@
 				</tr>
 			</cr:forEach>
 		</tbody>
-
-		
+	</table>
+	<br><br>
+	<!-- 페이징  -->
+	<table border="1" cellpadding="0" cellspacing="0">
+		<tbody>
+			<tr height="30">
+				<td width="50" align="center" onclick="pg('1')">1</td>
+			</tr>
+		</tbody>
 	</table>
 </body>
 	<script>
@@ -66,6 +73,10 @@
 			else{
 				return;
 			}
+		}
+		
+		function pg(no) {
+			location.href='./bannerlist?pageno='+no;
 		}
 	</script>
 </html>
