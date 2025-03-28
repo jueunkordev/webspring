@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- ERP, MRP, CMS, EPS, IOT, WMS -->
+<title>상담신청(CMS) 페이지</title>
+</head>
+<body>
+	<form id="frm" method="post" action="./cmsok.do">
+    제목 : <input type="text" name="csubject"><br>
+    상담자명 : <input type="text" name="cuser"><br>
+    상담목적 : <input type="checkbox" name="cate" value="cms1"> 심리상담
+    <input type="checkbox" name="cate" value="cms2"> 학교생활
+    <input type="checkbox" name="cate" value="cms3"> 가정
+    <input type="checkbox" name="cate" value="cms4"> 학업 및 진로
+    <input type="checkbox" name="cate" value="cms5"> 대인관계
+    <br>
+    <button type="submit" onclick="gopage()">상담신청</button>
+</form>
+
+</body>
+<script>
+	function gopage() {
+		frm.submit();
+	}
+</script>
+</html>

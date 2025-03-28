@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Spring으로 파일 전송</title>
+	</head>
+	<body>
+		<form id="frm" method="post" action="./fileok.do" enctype="multipart/form-data">
+			첨부파일 : <input type="file" name="mfile">
+			<input type="button" value="전송" onclick="ok()">
+		</form>
+		<br><br><br>
+		<form id="frm2" method="post" action="./fileok2.do" enctype="multipart/form-data">
+			첨부파일 멀티 : <input type="file" name="mfile" multiple="multiple">
+			<!-- 첨부파일 멀티 : <input type="file" name="mfile">
+			첨부파일 멀티 : <input type="file" name="mfile"> -->
+			<input type="button" value="전송" onclick="ok2()">
+		</form>
+	</body>
+	<script>
+		function ok() {
+			frm.submit();
+		}
+		function ok2() {
+			frm2.submit();
+		}
+	</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제휴문의</title>
+</head>
+<body>
+	<form id="frm" method="post" action="./contactusok.do">
+		제목 : <input type="text" name="subject"><br>
+		담당자명 : <input type="text" name="mname"><br>
+		회신메일 : <input type="text" name="memail"><br>
+		내용 :  <textarea name="mtext"></textarea><br>
+		<button type="submit">제휴문의</button>
+	</form>
+</body>
+<script>
+	function gopage() {
+		frm.submit();
+	}
+</script>
+</html>

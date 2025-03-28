@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL 문법에 대한 파일 (mapper) namespace="spring_learning.koo" 여기서 spring_learning 
+	=> 패키지명 koo 라는 Mapper 어노테이션을 찾음 => mapper.xml과 koo.java를 연결시켜줌 -->
+<mapper namespace="spring_learning.macbook_mapper">
+	<!-- DML만 가능 (DDL, DCL 불가능 => 옛날처럼 커넥션으로 만드는 방법 밖에 없음) <select></select> 
+		<insert></insert> <update></update> <delete></delete> -->
+	<!-- xml에서는 세미콜론 안씀 ! ${} : 필드명, 테이블명, 파라미터 #{} : 값을 적용시킬때 사용하는 파라미터값 => 
+		파라미터에 달러쓰면 보안개스렉이; 좋은 예) 외따옴표가 필요없는 애는 달러 / 외따옴표가 필요한 애는 샵 select * from 
+		${mrp} where mid=#{mid}; -->
+
+	<insert id="macbook_insert">
+		insert into macbook_class
+		(midx,class_part,class_cate,class_name,class_day,class_price,class_sales,class_info,class_teacher,class_object,class_use,today)
+		values
+		('0',#{class_part},#{class_cate},#{class_name},#{class_day},#{class_price},#{class_sales},#{class_info},#{class_teacher},#{class_object},#{class_use},now())
+	</insert>
+
+	<!-- resultType : config.xml에서 셋팅된 alias를 이용하여 Model DTO에 이관 -->
+
+	<!-- 과정 데이터 수정 -->
+	<update id="macbook_update">
+		update macbook_class set class_part=#{class_part}, class_cate=#{class_cate},
+		class_name=#{class_name }, class_day=#{class_day }, class_price=#{
+		class_price},
+		class_sales=#{class_sales }, class_info=#{class_info }, class_teacher=#{class_teacher },
+		class_object=#{class_object }, class_use=#{class_use }
+		where midx=#{midx}
+	</update>
+
+	<!-- 과정 하나의 데이터 -->
+	<select id="macbook_one" resultType="macbookdto"
+		parameterType="String"> <!-- id로 받은 데이터 저장하는게 resultType -->
+		select * from macbook_class where midx=#{midx}
+	</select>
+
+	<!-- 과정 전체의 리스트 데이터 -->
+	<select id="macbook_select" resultType="macbookdto">
+		select * from
+		macbook_class order by midx desc
+	</select>
+	<!-- 자료형이 int -->
+	<delete id="macbook_delete" parameterType="int">
+		delete from
+		macbook_class where midx=#{midx}
+	</delete>
+
+</mapper>

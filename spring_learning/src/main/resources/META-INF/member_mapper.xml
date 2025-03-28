@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="macbook_user">
+
+	
+
+	<!-- 배너 전체 리스트 -->
+	<select id="banner_all" resultType="banner_DTO">
+		select * from macbook_banner order by bidx desc
+	</select>
+
+	<!--  -->
+	<!-- 
+		mysql + mariadb : concat('%',#{search})
+		oracle : like '%' || #{search} || '%'
+		mssql : like '%' + #{search} + '%'
+	 -->
+	<select id="banner_search" resultType="banner_DTO" parameterType="String">
+	  SELECT * FROM macbook_banner 
+	  WHERE bname LIKE CONCAT('%', #{search}, '%') 
+	  ORDER BY bidx DESC
+	</select>
+	
+	<!-- 배너 등록 테이블 -->
+	<insert id="banner_new">
+		insert into macbook_banner (bidx,bname,file_ori,file_new,file_url,bdate) values ('0',#{bname},#{file_ori},#{file_new},#{file_url},now()) 
+	</insert>
+
+	<!-- 전체 데이터 출력 -->
+	<select id="user_all" resultType="memberdto"
+		parameterType="String">
+		select * from macbook_member order by midx desc
+	</select>
+
+	<!-- 아이디 찾는 문법 -->
+	<select id="search_userid" resultType="memberdto"
+		parameterType="Map">
+		select * from macbook_member where mname=#{mname} and
+		memail=#{memail}
+	</select>
+	
+	<select id="cms_views" resultType="Map"> <!-- DTO 없음 -->
+		select * from macbook_cms where cidx='3'
+	</select>
+
+	<!-- Table이 다른 쿼리문 -->
+	<insert id="cms_in" parameterType="map">
+		INSERT INTO macbook_cms (cidx, csubject, cuser, cate, cdate)
+		VALUES ('0', #{csubject}, #{cuser}, #{cate}, now())
+	</insert>
+</mapper>

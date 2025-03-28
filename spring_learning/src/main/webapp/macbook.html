@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>과정 개설</title>
+</head>
+<body>
+<script src="./macbook.js?v=1"></script>
+<form id="frm" method="post" action="./macbook_ok.do">
+과정구분 : 
+<select name="class_part">
+<option value="온라인 상시과정">온라인 상시과정</option> 
+<option value="온라인 정규 과정">온라인 정규 과정</option> 
+<option value="집합 과정">집합 과정</option> 
+</select><br>
+과정 카테고리 :
+<select name="class_cate">
+<option value="교육">교육</option>
+<option value="보강">보강</option>
+<option value="자격증">자격증</option>
+</select><br>
+과정명 : <input type="text" name="class_name"><br>
+학습일수 : <input type="text" name="class_day"><br>
+정가 : <input type="text" name="class_price"><br>
+수강료 : <input type="text" name="class_sales"><br>
+과정소개 : <textarea cols="100" rows="5" name="class_info"></textarea><br>
+강사명 : <input type="text" name="class_teacher"><br>
+학습목표 : <textarea cols="100" rows="5" name="class_object"></textarea><br>
+강의 개강 여부 : <input type="radio" value="Y" name="class_use">개강
+<input type="radio" value="N" name="class_use" checked>종강<br>
+<input type="button" value="강의개설" onclick="save_class()">
+</form>
+</body>
+</html>

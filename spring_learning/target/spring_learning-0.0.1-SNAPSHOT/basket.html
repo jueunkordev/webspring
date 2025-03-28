@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+		<meta charset="UTF-8">
+		<title>장바구니</title>
+	</head>
+	<body>
+		<!--form id="frm" method="post" action="./ddd.do"-->
+		<form id="frm" method="post" action="./eee.do">
+		상품명 : <input type="text" name="pdnm"><br>
+		상품코드 : <input type="text" name="pcode"><br>
+		상품가격 : <input type="text" name="pmoney"><br>
+		<button type="button" onclick="ok()">구매확정</button>
+		</form>
+	</body>
+	<script>
+	function ok() {
+		frm.submit();
+	}
+	</script>
+</html>

@@ -1,0 +1,19 @@
+<!--  spring + spring-boot   -->
+<!-- 
+1. beans를 사용하여 beans, bean 태그를 사용하여 Controller 및 환경설정
+2. context : Spring 프레임워크의 bean에 대한 종속성을 관리하는 엔진 <context></context>를 쓸 수 있음 (package 그룹단위별로 관리)
+3. mvc : Spring 프레임워크의 Model, View, Controller 형태의 구성
+ -->
+<beans
+   xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd                   
+                  http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd                   
+                  http://www.springframework.org/schema/mvc ttps://www.springframework.org/schema/mvc/spring-mvc.xsd">
+   <!-- bean : 가상의 컨테이너, id : 가상의 주소, class : java 경로 -->
+   <!-- <resource mapping="/resource/**" location="/resource/"/> -->
+   <bean id="/test.do" class="spring_learning.test"/>
+   <bean id="" class=""/>
+</beans>

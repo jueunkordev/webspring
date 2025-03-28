@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+   xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xmlns:cache="http://www.springframework.org/schema/cache"
+   xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+   xmlns:mybatis-spring="http://www.springframework.org/schema/mybatis-spring"
+   xmlns:util="http://www.springframework.org/schema/util"
+   
+   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd                   
+                  http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd                   
+                  http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+                  http://www.springframework.org/schema/cache https://www.springframework.org/schema/cache/spring-cache.xsd
+                  http://www.springframework.org/schema/jdbc https://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+                  http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd
+                  http://mybatis.org/schema/mybatis-spring https://mybatis.org/schema/mybatis-spring.xsd
+                  ">
+		<!-- DB접속 정보 활성화하는 XML -->
+	<context:annotation-config/>   <!-- Model에서 DB를 사용할 수 있도록 함 -->
+   <!-- Connection 데이터베이스 정보 -->
+   <!-- destroy-method="close" : 문법이 완료되었을 경우 자동으로 Database를 종료 -->
+   <bean id="dbinfo" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+   <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+   <property name="url" value="jdbc:mysql://localhost:3306/mrp"/>
+   <property name="username" value="project"/>
+   <property name="password" value="p402402"/>
+   </bean>
+</beans>
