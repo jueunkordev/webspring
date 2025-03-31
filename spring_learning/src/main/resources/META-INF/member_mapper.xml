@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="macbook_user">
 
+	<!-- 해당 배너 고유값으로 데이터 삭제 처리 -->
+	<delete id="banner_del">
+		delete from macbook_banner where bidx=#{no}
+	</delete>
+
 	<!-- 배너에 대한 전체 데이터 갯수 쿼리문 -->
 	<select id="banner_total" resultType="int">
 		select count(*) as total from macbook_banner

@@ -48,4 +48,18 @@ public class banner_DAO {
 		int result = this.st.insert("macbook_user.banner_new",dto);
 		return result;
 	}
+	
+	// 배너 삭제 메소드
+	public int banner_del(String no) {
+		int result = this.st.delete("macbook_user.banner_del", no);
+		return result;
+	}
 }
+
+
+
+
+
+
+
+
